@@ -42,6 +42,7 @@ public class NBody {
     public static double R;             // radius of universe
 
     // global arrays of Body properties
+    // TODO:    replace all of these arrays with one array of Body objects
     public static double[] rx;          // x position (m)
     public static double[] ry;          // y position (m)
     public static double[] vx;          // x velocity (m/s)
@@ -64,6 +65,7 @@ public class NBody {
         R = scan.nextDouble();      // radius of universe (m)
 
         // declare parallel arrays
+        // TODO:    declare the size of our array of Body objects in place of all of these arrays
         rx = new double[N];         // x position (m)
         ry = new double[N];         // y position (m)
         vx = new double[N];         // x velocity (m/s)
@@ -73,6 +75,7 @@ public class NBody {
         image = new String[N];      // name of gif
 
         // read in initial position, velocity, mass, and image name from stdin
+        // TODO:    for each index in our array of Body objects, initialize a Body object by passing the scanner to the Body constructor along with the world-size R
         for (int i = 0; i < N; i++) {
             rx[i]    = scan.nextDouble();
             ry[i]    = scan.nextDouble();
@@ -105,6 +108,11 @@ public class NBody {
             double[] fy = new double[N];
 
             // calculate forces on each object
+            // TODO:    for each index i in our array of Body objects, 
+            //              call zeroF to set the Force of object i to 0
+            //              call updateF for every other object j in our array of Body objects to sum all forces for object i at ths instance
+            //              call stepF for object i to update velocity and position
+            //              call draw for object i to add the object to the StDraw canvas
             for (int i = 0; i < N; i++) {
                 fx[i] = 0;
                 fy[i] = 0;
@@ -151,6 +159,8 @@ public class NBody {
         // print final state of universe to standard output
         System.out.printf("%d\n", N);
         System.out.printf("%.2e\n", R);
+        
+        // TODO:    for each index i in our array of Body objects, call status to format print object data
         for (int i = 0; i < N; i++) {
             System.out.printf("%11.4e %11.4e %11.4e %11.4e %11.4e %12s\n",
                           rx[i], ry[i], vx[i], vy[i], mass[i], image[i]);
